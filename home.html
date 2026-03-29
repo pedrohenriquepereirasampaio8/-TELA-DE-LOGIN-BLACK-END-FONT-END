@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<canvas id="particles"></canvas>
+
+<div class="container">
+  <h1>🎉 Bem-vindo!</h1>
+
+  <h2 id="userName">Carregando usuário...</h2>
+
+  <p>Você está logado com sucesso 🔐</p>
+
+  <button onclick="logout()">Sair</button>
+</div>
+
+<script src="script.js"></script>
+
+<script>
+// ================= MOSTRAR USUÁRIO =================
+async function getUser() {
+  const token = localStorage.getItem("token");
+
+  if (!token) {
+    window.location.href = "index.html";
+    return;
+  }
+
+  try {
+    const res = await fetch("http://localhost:3000/dashboard", {
+      headers: {
+        "Authorization": token
+      }
+    });
+
+    const data = await res.json();
+
+    if (data.user) {
+      document.getElementById("userName").innerText =
+        "👤 " + data.user.username;
+    } else {
+      document.getElementById("userName").innerText =
+        "Usuário não identificado";
+    }
+
+  } catch {
+    document.getElementById("userName").innerText =
+      "Erro ao carregar usuário";
+  }
+}
+
+getUser();
+</script>
+
+</body>
+</html>

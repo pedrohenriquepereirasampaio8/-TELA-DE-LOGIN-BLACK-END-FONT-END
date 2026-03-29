@@ -1,0 +1,163 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: black;
+  color: white;
+  overflow: hidden;
+}
+
+/* PARTICULAS */
+#particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+/* CONTAINER */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  backdrop-filter: blur(2px);
+}
+
+/* TITULO NEON */
+h2 {
+  color: red;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+  text-shadow:
+    0 0 5px red,
+    0 0 10px red,
+    0 0 20px red;
+  animation: glow 1.5s infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 5px red, 0 0 10px red;
+  }
+  to {
+    text-shadow: 0 0 10px red, 0 0 20px red, 0 0 30px red;
+  }
+}
+
+/* INPUTS */
+input {
+  width: 260px;
+  padding: 12px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 6px;
+  outline: none;
+  background: #111;
+  color: white;
+  transition: 0.3s;
+}
+
+input::placeholder {
+  color: #aaa;
+}
+
+/* INPUT FOCUS */
+input:focus {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px red;
+}
+
+/* BOTÃO LED */
+button {
+  width: 280px;
+  padding: 12px;
+  margin-top: 12px;
+  background: black;
+  color: white;
+  border: 2px solid red;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* EFEITO HOVER */
+button:hover {
+  background: red;
+  transform: scale(1.05);
+  box-shadow:
+    0 0 5px red,
+    0 0 10px red,
+    0 0 20px red,
+    0 0 40px red;
+}
+
+/* BORDA ANIMADA */
+button::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: 8px;
+  background: linear-gradient(120deg, red, transparent, red);
+  z-index: -1;
+  animation: borderRun 2s linear infinite;
+}
+
+/* ANIMAÇÃO BORDA */
+@keyframes borderRun {
+  0% { opacity: 0.2; }
+  50% { opacity: 1; }
+  100% { opacity: 0.2; }
+}
+
+/* LOADING */
+#loading {
+  margin-top: 12px;
+  color: red;
+  font-weight: bold;
+  animation: blink 1s infinite;
+}
+
+.hidden {
+  display: none;
+}
+
+@keyframes blink {
+  50% { opacity: 0.3; }
+}
+
+/* MENSAGEM */
+#message {
+  margin-top: 10px;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+/* HOME */
+body.home {
+  background: #111;
+  color: white;
+}
+
+h1 {
+  margin-bottom: 10px;
+}
+
+/* RESPONSIVO */
+@media (max-width: 500px) {
+  input, button {
+    width: 90%;
+  }
+}

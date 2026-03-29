@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- FUNDO ANIMADO -->
+<canvas id="particles"></canvas>
+
+<div class="container">
+  <h2>🔐 Sistema de Login</h2>
+
+  <input type="text" id="username" placeholder="Usuário">
+  <input type="password" id="password" placeholder="Senha">
+
+  <button onclick="login()">Entrar</button>
+  <button onclick="register()">Cadastrar</button>
+
+  <!-- LOADING -->
+  <div id="loading" class="hidden">🔐 Verificando acesso...</div>
+
+  <!-- MENSAGEM -->
+  <p id="message"></p>
+</div>
+
+<script src="script.js"></script>
+
+<script>
+// ================= ENTER PRA LOGAR =================
+document.addEventListener("keydown", function(e) {
+  if (e.key === "Enter") {
+    login();
+  }
+});
+</script>
+
+</body>
+</html>
